@@ -2,7 +2,7 @@ package br.com.caelum.fj91;
 
 import br.com.caelum.fj91.model.Authenticable;
 import br.com.caelum.fj91.model.LoginStrategy;
-import br.com.caelum.fj91.model.User;
+import br.com.caelum.fj91.model.SystemUser;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,17 +14,17 @@ import static org.junit.Assert.assertTrue;
 public class LoginTest {
 
 
-    private User user;
+    private SystemUser systemUser;
 
     @Before
     public void setup(){
-        user = new User("feh-wilinando","123");
+        systemUser = new SystemUser("feh-wilinando","123");
     }
     @Test
     public void shouldLogInByEmail(){
         LoginStrategy login = LoginStrategy.EMAIL;
 
-        Optional<Authenticable> authenticableOptional =  login.validate(user);
+        Optional<Authenticable> authenticableOptional =  login.validate(systemUser);
 
 
         assertTrue(authenticableOptional.isPresent());
@@ -41,7 +41,7 @@ public class LoginTest {
     public void shouldLogInByFacebook(){
         LoginStrategy login = LoginStrategy.FACEBOOK;
 
-        Optional<Authenticable> authenticableOptional =  login.validate(user);
+        Optional<Authenticable> authenticableOptional =  login.validate(systemUser);
 
 
         assertTrue(authenticableOptional.isPresent());
@@ -58,7 +58,7 @@ public class LoginTest {
     public void shouldLogInByGPlus(){
         LoginStrategy login = LoginStrategy.GPLUS;
 
-        Optional<Authenticable> authenticableOptional =  login.validate(user);
+        Optional<Authenticable> authenticableOptional =  login.validate(systemUser);
 
 
         assertTrue(authenticableOptional.isPresent());
@@ -75,7 +75,7 @@ public class LoginTest {
     public void shouldLogInByGithub(){
         LoginStrategy login = LoginStrategy.GITHUB;
 
-        Optional<Authenticable> authenticableOptional =  login.validate(user);
+        Optional<Authenticable> authenticableOptional =  login.validate(systemUser);
 
 
         assertTrue(authenticableOptional.isPresent());
